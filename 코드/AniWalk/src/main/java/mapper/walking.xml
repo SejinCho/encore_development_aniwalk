@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.pandorabox.aniwalk.walking">
+	<select id="recruitDog" parameterType="String" resultType="walking">
+		select * from ani_dog d left outer join ani_member m
+		on m.mem_id=d.mem_id
+		left outer join ani_dog_img i
+		on d.dog_id=i.dog_id
+		where m.mem_nickname = #{mem_nickname}
+	</select>
+	<insert id="recruitInsert" parameterType="walking">
+		insert into ani_walking(walking_id, recruit_mem_id, dog_id, walk_date, walk_start_time,
+		walk_end_time, recruit_notices, recruit_location,walking_point)
+		values('walking'||lpad(seq_walking.nextval,5,0),#{recruit_mem_id},#{dog_id},to_date(#{walk_date},'YYYY-MM-DD'),
+		#{walk_start_time},#{walk_end_time},#{recruit_notices},#{recruit_location},#{walking_point})	
+	</insert>
+	<!-- 모집글 상세검색 -->
+	<select id="getSearchRecruitList" parameterType="walking" resultType="walking">
+		select * from ani_walking w left outer join ani_dog d
+        on d.dog_id = w.dog_id
+        left outer join ani_dog_img i
+        on d.dog_id = i.dog_id
+        where w.recruit_close_yn=0
+        <if test="dog_type != null and !dog_type.equals('견종')">
+			and d.dog_type=#{dog_type}
+        </if>
+        <if test="recruit_location != null and !recruit_location.equals('')">
+        	and w.recruit_location like '%'||#{recruit_location}||'%'
+        </if>
+        <if test="walk_date != null and !walk_date.equals('')">
+        	and to_char(w.walk_date, 'YYYY-MM-DD')=#{walk_date}
+        </if>
+        <if test="walk_start_time != null and !walk_start_time.equals('')">
+        	and to_number(substr(w.walk_start_time, 1,2)||substr(w.walk_start_time,4,2)) - 
+				to_number(substr(#{walk_start_time}, 1,2)||substr(#{walk_start_time}, 4,2)) &gt; 0
+        </if>
+        <if test="walk_end_time != null and !walk_end_time.equals('')">
+        	and to_number(substr(w.walk_end_time, 1,2)||substr(w.walk_end_time,4,2)) - 
+				to_number(substr(#{walk_end_time}, 1,2)||substr(#{walk_end_time}, 4,2)) &lt; 0
+        </if>
+        order by w.walk_date desc
+	</select>
+	
+	<!-- 모집글 리스트 -->
+    <select id="getRecruitList" parameterType="String" resultType="walking">
+        select * from ani_walking w left outer join ani_dog d
+        on d.dog_id = w.dog_id
+        left outer join ani_dog_img i
+        on d.dog_id = i.dog_id
+        where w.recruit_close_yn=0
+        <if test="value != null">
+        and w.recruit_location like '%'||#{value}||'%'
+        </if>
+        order by w.walk_date desc
+    </select>
+   <!-- 자신이 올린 모집글 리스트-->
+	<select id="recruitlist" parameterType="String" resultType="walking">
+		select to_char(w.recruit_date,'YYYY-MM-DD') as recruit_date,d.dog_type,w.recruit_location,
+        w.walk_start_time, w.walk_end_time, i.dog_image, w.walk_date, w.walking_point,w.walking_id
+        from ani_walking w left outer join ani_dog d
+		on w.dog_id=d.dog_id
+		left outer join ani_dog_img i
+		on i.dog_id=d.dog_id
+        left outer join ani_member m
+        on m.mem_id=w.recruit_mem_id
+        where m.mem_nickname=#{mem_nickname}
+        and w.recruit_close_yn=0
+        order by w.recruit_date desc 
+		
+	</select>
+	<!-- 산책 미션 등록 -->
+	<insert id="insertWalkingMission" parameterType="walking">
+		insert into ANI_Walking_Mission
+		values('mission'||lpad(seq_walking_mission.nextval,5,0),#{mission_contents},#{mission_img},
+		#{mission_perform_location}, sysdate, #{walking_id})
+	</insert>
+	<!-- 산책 미션 리스트 -->
+	<select id="getMissionList" parameterType="String" resultType="walking">
+		select * from ANI_Walking_Mission where walking_id=#{walking_id} 
+		order by mission_perform_time
+	</select>
+	
+	<!-- 모집글 올리면 포인트 업데이트(member db) -->
+	<update id="recruitUpdate" parameterType="walking">
+		<![CDATA[
+		update ani_member set mem_point=mem_point-#{walking_point} where mem_id=#{recruit_mem_id}
+		]]>
+	</update>
+	
+	<!-- 신청자 리스트 -->
+	<select id="applyList" parameterType="String" resultType="apply">
+		select * from ani_apply a left outer join ani_walking w
+		on a.walking_id = w.walking_id
+		left outer join ani_walker m
+		on m.wk_id = a.apply_wk_id
+		where a.walking_id=#{walking_id}
+	</select>
+	<!-- owner가 워커 선택(매칭)-->
+	<update id="matching" parameterType="Map">
+		update ani_walking set match_wk_id=#{match_wk_id},recruit_close_yn=1 where walking_id=#{walking_id}
+	
+	</update>
+	<!-- 오늘 산책 일정 -->
+	<select id="todayWalking" parameterType="Map" resultType="walking">
+		<![CDATA[
+			select * from ani_walking w left outer join ani_member m
+			on w.recruit_mem_id = m.mem_id
+			left outer join ani_walker f
+			on f.wk_id = w.match_wk_id 
+			left outer join ani_dog d
+			on d.dog_id = w.dog_id
+			where m.mem_nickname = #{mem_nickname} 
+			and walk_date = to_date(#{walk_date},'YYYY-MM-DD')
+			and recruit_close_yn=1
+			and match_wk_id is not null
+		]]>
+	</select>
+	<!-- wk_id 가져오기 -->
+	<select id="wkId" parameterType="String" resultType="String">
+		select wk_id from ani_walker where walker_id = #{walker_id}
+	</select>
+	<!-- walker 산책 신청 -->
+	<insert id="walkingRecruit" parameterType="Map">
+		insert into ani_apply values('apply'||lpad(seq_apply.nextval,5,0),#{wk_id},#{walking_id},sysdate)
+	</insert>
+	<!-- 전체 산책일정(매칭된것만) -->
+	<select id="allWalking" parameterType="String" resultType="walking">
+		<![CDATA[
+			select * from ani_walking w left outer join ani_member m
+			on w.recruit_mem_id = m.mem_id
+			left outer join ani_walker f
+			on f.wk_id = w.match_wk_id 
+			left outer join ani_dog d
+			on d.dog_id = w.dog_id
+			where m.mem_nickname = #{mem_nickname} 
+			and recruit_close_yn=1
+			and match_wk_id is not null
+			order by w.real_walk_end_time desc, w.walk_date 
+		]]>
+	</select>
+	<!-- 프렌즈 산책 리스트 -->
+	<select id="getWalkingList" parameterType="String" resultType="walking">
+		select * from ani_walking w 
+		left outer join ani_dog d
+		on w.dog_id=d.dog_id 
+		left outer join ani_dog_img i
+		on w.dog_id=i.dog_id 
+		where match_wk_id=(select wk_id from ani_walker where walker_id=#{walker_id})
+		and w.real_walk_end_time is null
+	</select>
+	
+	<!-- 펫 프렌즈 페이지 - 산책 현황 리스트 -->
+	<select id="getAllWalkingList" parameterType="String" resultType="walking">
+		select w.*, m.mem_nickname, d.dog_name from ani_walking w 
+		left outer join ani_member m
+		on w.recruit_mem_id=m.mem_id 
+		left outer join ani_dog d
+		on w.dog_id = d.dog_id
+		where match_wk_id=(select wk_id from ani_walker where walker_id=#{walker_id})
+	</select>
+	
+	<!-- 워커 산책 신청시 중복인지 확인 -->
+	<select id="applyCheck" parameterType="Map" resultType="int">
+		select count(*) from ani_apply where walking_id = #{walking_id}
+		and apply_wk_id = #{wk_id} 
+	</select>
+	
+	<!-- 산책시간 등록 -->
+	<update id="updateWalkingTime" parameterType="Map">
+		update ani_walking set 
+		<if test="mission_contents == 'start'">
+			real_walk_start_time=sysdate
+		</if>	
+		<if test="mission_contents == 'end'">
+			real_walk_end_time=sysdate
+		</if>
+		where walking_id=#{walking_id}
+	</update>
+	
+	<!-- 실시간 산책 정보 -->
+	<select id="getWalkingInfo" parameterType="String" resultType="walking">
+		select * from ani_walking where walking_id=#{walking_id}
+	</select>
+	
+	<!-- 산책 path -->
+	<insert id="insertWalkingLocation" parameterType="walking">
+		insert into ani_walking_path values('path'||lpad(seq_walking_path.nextval,5,0),
+				#{walking_id}, #{walking_lat}, #{walking_lng})
+	</insert>
+	
+	<!-- 산책 path 불러오기 -->
+	<select id="getWalkingLocation" parameterType="String" resultType="walking">
+		select * from ani_walking_path where walking_id=#{walking_id}
+	</select>
+</mapper>

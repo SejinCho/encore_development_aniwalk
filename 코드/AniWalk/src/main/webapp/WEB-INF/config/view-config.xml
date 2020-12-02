@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<view-controller path="/index.do" view-name="index"/>
+	<view-controller path="/login.do" view-name="login"/>												   
+	<view-controller path="/walkerApply.do" view-name="walkerApply"/>
+	
+	<view-controller path="/manager/user.do" view-name="manager/user"/>
+	<view-controller path="/manager/walkerInfo.do" view-name="manager/walkerInfo"/>
+	<view-controller path="/owner/walker.do" view-name="owner/walkerList"/>
+	<view-controller path="/owner/walkerInfo.do" view-name="owner/walkerInfo"/>
+	<view-controller path="/walker/index.do" view-name="walker/index"/>
+	<view-controller path="/walker/main.do" view-name="walker/main"/>
+	<view-controller path="/walker/activiting.do" view-name="walker/activiting"/>
+	<view-controller path="/walker/activList.do" view-name="walker/activList"/>
+	<view-controller path="/owner/activity.do" view-name="owner/activity"/>
+</beans:beans>

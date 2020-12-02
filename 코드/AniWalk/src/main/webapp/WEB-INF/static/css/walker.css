@@ -1,0 +1,895 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+/*나토산스
+font-family: 'Noto Sans KR', sans-serif;
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+/*배민주아체
+font-family: 'Jua', sans-serif;
+*/
+
+
+:root{
+    --main-color: #71d5c2;
+    --white: #fafafa;
+    --black: #212121;
+    --purple: rgb(155, 89, 182);
+    --blue: rgb(90, 166, 216);
+    --yellow: rgb(241, 196, 15);
+    --darkgray: rgb(94, 94, 94);
+}
+
+/**************************************************
+
+    공통
+
+***************************************************/
+html{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+
+    overflow: hidden;
+
+    margin: 0;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ol{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ul li ul{
+    list-style: circle;
+    margin: 20px auto 0 auto;
+}
+button{
+    border: none;
+}
+button:hover{
+    color: var(--white);
+}
+
+
+::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+.subtitle{
+    display: flex;
+}
+
+.color-white{
+    color: white;
+}
+
+
+/**************************************************
+
+    별점
+
+***************************************************/
+
+.star-rating {
+    width:304px;
+}
+.star-rating,.star-rating span {
+    display:inline-block;
+    height:55px;
+    overflow:hidden;
+    background:url("../../images/star.png")no-repeat;
+}
+.star-rating span{
+    background-position:left bottom;
+    line-height:0;
+    vertical-align:top;
+}
+
+/**************************************************
+
+    modal-bg
+
+***************************************************/
+.modal-bg{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content{
+    width: 70%;
+    height: 70%;
+    background: var(--white);
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content .close{
+    padding: 10px;
+    z-index: 1;
+    position: absolute;
+    top: 2px;
+    right: 3%;
+}
+.hidden{
+    display: none;
+}
+/**************************************************
+
+    popup
+
+***************************************************/
+.popup-bg{
+    width: 100%;
+    height: 100%;
+
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.4);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.popup-bg .popup-content{
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+
+    width: 35%;
+}
+/**************************************************
+
+    walkerIndex
+
+***************************************************/
+.walker-index{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.walker-index button{
+    width: 300px;
+    height: 50px;
+}
+.walker-login{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+.walker-login ul li{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+.text-center div{
+    width: 100%;
+    text-align: center;
+}
+.text-center div:hover{
+    cursor: pointer;
+}
+.walker-login ul li button{
+    width: 100%;
+    height: 45px;
+    background: var(--purple);
+    color: var(--white);
+}
+
+/**************************************************
+
+    walkerTemplate
+
+***************************************************/
+nav{
+    min-width: 100px;
+    max-width: 7%;
+}
+article{
+    width: 100%;
+    height: 100%;
+}
+
+/**************************************************
+
+    walkerNav
+
+***************************************************/
+.walker-nav{
+    width: 100%;
+    height: 100%;
+
+    font-size: 4rem;
+    color: var(--white);
+    background: rgb(90, 166, 216);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+/**************************************************
+
+    walkerMain
+
+***************************************************/
+.main-active-none{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main-active-none img{
+    width: 40%;
+    height: 50%;
+
+    margin-bottom: 50px;
+}
+.main-active-list{
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    padding: 20px;
+}
+.main-active-list h2{
+    margin-bottom: 50px;
+}
+.main-active-list .subtitle{
+    width: 100%;
+    display: flex;
+}
+.main-active-list table{
+    width: 98%;
+    margin: 5px auto 50px auto;
+}
+.main-active-list table td{
+    padding: 5px;
+}
+.main-active-list table th{
+    padding: 5px;
+}
+.main-active-list table tr td div{
+    width: 100%;
+    padding: 5px;
+    color: var(--white);
+    text-align: center;
+    font-weight: bold;
+}
+.not{
+    background: var(--yellow);
+}
+.done{
+    background: var(--blue);
+}
+
+
+/**************************************************
+
+    walkerRecruitList
+
+***************************************************/
+section{
+    width: 100%;
+    height: 100%;
+
+    overflow: scroll;
+
+    padding: 30px;
+}
+section .search-part{
+    width: 100%;
+}
+section .search-part form{
+    width: 100%;
+    display: flex;
+}
+section .search-part form label{
+    width: 80%;
+}
+
+.detail-search{
+    width: 100%;
+    text-align: center;
+}
+.detail-search:hover{
+    cursor: pointer;
+}
+.walker-recruit-list .list-part {
+    margin-top: 50px;
+    margin-left: 5%;
+}
+.walker-recruit-list .list-part .form-group{
+    width: 30%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 20px 0;
+    margin: 10px;
+
+    border-radius: 10px;
+    background: rgba(52, 152, 219, 0.28);
+}
+.walker-recruit-list .list-part .form-group img{
+    width: 250px;
+    height: 200px;
+
+    margin-bottom: 20px;
+}
+.walker-recruit-list .list-part .form-group ul{
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--white);
+
+}
+.walker-recruit-list .list-part .form-group button{
+    width: 85%;
+    height: 50px;
+    background: rgb(155, 89, 182);
+    border:none;
+    color: var(--white);
+    font-weight: bold;
+}
+.recruit-apply-modal-form{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+}
+.recruit-apply-modal-form button{
+    width: 40%;
+    height: 45px;
+}
+/**************************************************
+
+    walkerRecruitList - 산책신청모달
+
+***************************************************/
+.recruit-modal-bg{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.recruit-modal-content{
+    width: 50%;
+    height: 50%;
+    background: var(--white);
+    padding: 10px;
+    border-radius: 10px;
+
+    display: flex;
+}
+.recruit-modal-content .close-btn{
+    position: absolute;
+    right: 26%;
+    background: none;
+}
+/**************************************************
+
+    walkerMy
+
+***************************************************/
+.info-part{
+    display: flex;
+    justify-content: center;
+}
+.info-part img{
+    width: 300px;
+    height: 250px;
+}
+.info-part table{
+    width: 44%;
+    margin: 10px 0 30px 10%;
+}
+.info-part table th{
+    padding: 10px 0;
+    width: 100px;
+}
+.info-part .btn-default{
+    background: var(--darkgray);
+    color: var(--white);
+    border: none;
+}
+#infoUpdate{
+    width: 100%;
+    height: 45px;
+    margin: 40px auto;
+}
+
+.review-score{
+    display: flex;
+    margin-bottom: 30px;
+}
+.review-score h3{
+    margin: 0 10px;
+}
+.review-score span{
+    line-height: 38px;
+}
+.review-score .star-rating {
+    width: 170px;
+}
+.review-score .star-rating, .review-score .star-rating span {
+    display:inline-block;
+    height:27px;
+    overflow:hidden;
+    background:url("../../images/littlestar.png")no-repeat;
+}
+.review-score .star-rating span{
+    background-position:left bottom;
+    line-height:0;
+    vertical-align:top;
+}
+
+
+.list-item{
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+}
+.list-item ul{
+    width: 70%;
+    margin-left: 50px;
+}
+.list-item ul .bottom-margin{
+    margin-bottom: 30px;
+}
+.list-item ul .bottom-margin .right{
+    position: relative;
+    left: 50%;
+}
+.list-item .img-circle{
+    width: 40px;
+    height: 35px;
+}
+.list-item .img-rounded{
+    width: 150px;
+    height: 150px;
+}
+.list-item .star-rating {
+    width: 90px;
+}
+.list-item .star-rating, .list-item .star-rating span {
+    display:inline-block;
+    height:14px;
+    overflow:hidden;
+    background:url("../../images/morelittlestar.png")no-repeat;
+}
+.list-item .star-rating span{
+    background-position:left bottom;
+    line-height:0;
+    vertical-align:top;
+}
+
+.password-field{
+    width: 58%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.password-field h3{
+    margin-bottom: 70px;
+}
+.password-field div{
+    width: 100%;
+}
+.password-field .input-label{
+    width: 75%;
+    margin: 0 20px;
+}
+.password-field button{
+    width: 80%;
+    height: 50px;
+    margin: 50px auto 0 auto;
+}
+
+
+/**************************************************
+
+    walkerMyInfoUpdate
+
+***************************************************/
+.myinfo-update{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.myinfo-update form{
+    width: 70%;
+    margin: 10px auto;
+}
+.myinfo-update form h3{
+    position: relative;
+    top: -50px;
+}
+.myinfo-update form table input{
+    width: 90%;
+    margin-left: 20px;
+}
+.myinfo-update form table .select-city{
+    display: flex;
+    line-height: 33px;
+}
+.myinfo-update form table .select-city select{
+    margin: 0 10px;
+}
+.myinfo-update form table .btn-danger{
+    width: 150px;
+}
+.myinfo-update form table .btn-primary{
+    width: 100%;
+    height: 50px;
+    margin-top: 30px;
+}
+
+/**************************************************
+
+    walkerTalkList
+
+***************************************************/
+.search-part form{
+    display: flex;
+    justify-content: center;
+}
+.search-part form label{
+    width: 88%;
+}
+.talk-list{
+    width: 100%;
+}
+.talk-list .list-part{
+    margin-top: 85px;
+    width: 100%;
+}
+.list-part .talk-item{
+    display: flex;
+    justify-content: center;
+    background: rgb(224, 224, 224);
+    width: 90%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--darkgray);
+    margin: 20px auto;
+}
+.list-part .talk-item ul{
+    width: 85%;
+    display: flex;
+}
+.list-part .talk-item ul img{
+    width: 75px;
+    height: 75px;
+}
+.list-part .talk-item ul div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    margin-left: 30px;
+}
+/**************************************************
+
+    walkerTalkContent
+
+***************************************************/
+.talk-content{
+    width: 100%;
+    height: 100%;
+
+    overflow: scroll;
+
+
+    margin-bottom: 54px;
+
+}
+.talk-content .content-part{
+    margin-top: 60px;
+    padding: 20px;
+}
+.talk-content .content-part .you{
+    padding: 10px;
+    display: flex;
+}
+.talk-content .content-part .you img{
+    width: 60px;
+    height: 60px;
+}
+.content-part .you ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 30px;
+    width: 100%;
+    max-width: 100%;
+}
+.content-part .you ul li{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.content-part .you div{
+    padding: 8px;
+    border: 1px solid;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.talk-content .content-part .my{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 0;
+}
+.talk-content .content-part .my ul{
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+    margin-right: 0;
+}
+.talk-content .content-part .my ul li{
+    margin-right: 0;
+}
+.talk-content .content-part .my .my-talk-content{
+    padding: 8px;
+    border: 1px solid;
+    border-radius: 10px;
+    margin-left: 10px;
+    float: right;
+}
+
+.talk-inputForm{
+    background: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 15px 15px 5px;
+}
+.talk-inputForm label{
+    width: 93%;
+    margin-left: 10px;
+}
+/**************************************************
+
+    walkerTalkContent - 예약정보box
+
+***************************************************/
+.reserve-box-my{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    width: 100%;
+    padding: 15px 15px 5px 15px;
+
+    background: rgb(237, 237, 237);
+    border-radius: 10px;
+    border: none;
+}
+
+.reserve-box-my button{
+    margin: 15px auto 5px auto;
+    width: 70%;
+}
+
+.content-part .you ul li .reserve-box-you{
+    border: none;
+    background: rgb(237, 237, 237);
+}
+.content-part .you ul li .reserve-box-you ul li label{
+    margin-right: 10px;
+}
+.content-part .you ul li .reserve-box-you ul li div {
+    border: none;
+}
+.content-part .you ul li .reserve-box-you button{
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+}
+.content-part .you ul li .reserve-box-you .btn-line{
+    width: 100%;
+    display: flex;
+    border: none;
+}
+
+
+/**************************************************
+
+    walkerActivityList
+
+***************************************************/
+.activ-img {
+	width : 200px;
+	height : 200px;
+}
+
+.walker-active-list{
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+}
+.walker-active-list .today-part{
+    width: 100%;
+    padding: 20px;
+    background: rgba(155, 89, 182, 0.5);
+
+    text-align: center;
+    font-size: 2.2rem;
+}
+.walker-active-list .color-blue{
+    color: rgb(52, 152, 219);
+}
+.walker-active-list .color-purple{
+    color: rgb(155, 89, 182);
+}
+.walker-active-list .list-part{
+    padding: 10px;
+    margin-top: 0;
+    margin-left: 5%;
+    overflow: auto;
+}
+.walker-active-list .list-part .list-item{
+    padding: 20px;
+    border-radius: 10px;
+
+    background: rgba(52, 152, 219, 0.28);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin:10px;
+
+    width: 30%;
+}
+.walker-active-list .list-item img{
+    width: 250px;
+    height: 200px;
+    margin-bottom: 30px;
+}
+.walker-active-list .list-item ul{
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    margin:0;
+}
+.walker-active-list .list-item button{
+    width: 100%;
+    height: 50px;
+
+    margin-top: 20px;
+    border: none;
+    font-weight: bold;
+
+    background: rgb(155, 89, 182);
+}
+
+/**************************************************
+
+    walkerActiviting
+
+***************************************************/
+.walker-activing{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 20px 0 0 0;
+    background: rgb(127, 127, 127);
+
+    font-family: 'Jua', sans-serif;
+}
+.walker-activing .content-part{
+    display: flex;
+    justify-content: space-around;
+    overflow: scroll;
+}
+.walker-activing .activing-input{
+    width: 35%;
+}
+.walker-activing .activing-input .align-center{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.walker-activing .activing-input .align-center img{
+    margin: 10px;
+}
+.walker-activing .active-title{
+    color: var(--white);
+    margin: 0;
+
+    border-bottom: 3px solid var(--white);
+    padding-bottom: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.walker-activing .activing-input .output{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+.walker-activing .activing-map{
+    text-align: center;
+}
+
+.walker-activing .upload-part{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.walker-activing .active-menu{
+    background: rgba(155, 89, 182, 0.5);
+    font-size: 4rem;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100%;
+    height: 70px;
+}
+.walker-activing .active-menu i{
+    padding-top: 10px;
+}
+
+.walker-activing .content-part .mission-img img{
+    margin: 10px;
+}

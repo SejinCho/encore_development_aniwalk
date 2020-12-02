@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+	<!-- 펫 프렌즈 메인 -->
+	<definition name="walker/main" extends="walkerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/walker/walkerMain.jsp"/>
+	</definition>
+	<definition name="walker/my" extends="walkerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/walker/walkerMy.jsp"/>
+	</definition>
+	<definition name="walker/recruitlist" extends="walkerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/walker/walkerRecruitList.jsp"/>
+	</definition>
+	<definition name="walker/myInfo" extends="walkerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/walker/walkerMyInfoUpdate.jsp"/>
+	</definition>
+	<definition name="walker/activiting" extends="walkerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/walker/walkerActiviting.jsp"/>
+	</definition>
+	<definition name="walker/activList" extends="walkerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/walker/walkerActivityList.jsp"/>
+	</definition>
+	<definition name="walker/talkList" extends="walkerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/walker/walkerTalkList.jsp"/>
+	</definition>
+	<definition name="walker/talkContent" extends="walkerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/walker/walkerTalkContent.jsp"/>
+	</definition>
+	<definition name="walker/activDone" extends="walkerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/walker/walkerActivityDone.jsp"/>
+	</definition>
+</tiles-definitions>

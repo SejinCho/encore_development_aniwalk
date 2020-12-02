@@ -1,0 +1,1450 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+/*배민주아체
+font-family: 'Jua', sans-serif;
+*/
+
+:root{
+    --main-color: #71d5c2;
+    --white: #fafafa;
+    --black: #212121;
+    --purple: rgb(155, 89, 182);
+    --blue: rgb(90, 166, 216);
+    --yellow: rgb(241, 196, 15);
+    --darkgray: rgb(94, 94, 94);
+}
+/**************************************************
+
+    공통
+
+***************************************************/
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ol{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ul li ul{
+    list-style: circle;
+    margin: 20px auto 0 auto;
+}
+button{
+    border: none;
+}
+::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+.subtitle{
+    width: 100%;
+    display: flex;
+}
+/**************************************************
+
+    swiper
+
+***************************************************/
+.swiper-container{
+    width: 100%;
+}
+/**************************************************
+
+    별점
+
+***************************************************/
+
+.star-rating {
+    width:304px;
+}
+.star-rating,.star-rating span {
+    display:inline-block;
+    height:55px;
+    overflow:hidden;
+    background:url("../../images/star.png")no-repeat;
+}
+.star-rating span{
+    background-position:left bottom;
+    line-height:0;
+    vertical-align:top;
+}
+
+/**************************************************
+
+    modal-bg
+
+***************************************************/
+.modal-bg{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content{
+    width: 70%;
+    height: 70%;
+    background: var(--white);
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: scroll;
+}
+
+.modal-content .close{
+    padding: 10px;
+    z-index: 1;
+    position: absolute;
+    top: 2px;
+    right: 3%;
+}
+.modal-content .close-btn{
+	padding: 10px;
+    z-index: 1;
+    position: absolute;
+    top: 2px;
+    right: 3%;
+}
+.modal-content .btn-line .btn-default{
+    background: var(--darkgray);
+    color: var(--white);
+}
+.hidden{
+    display: none;
+}
+/**************************************************
+
+    popup
+
+***************************************************/
+.popup-bg{
+    width: 100%;
+    height: 100%;
+
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.4);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.popup-bg .popup-content{
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+
+    width: 35%;
+}
+.popup-bg .popup-content .btn-default{
+    color: var(--white);
+    background: var(--darkgray);
+    border: none;
+}
+/**************************************************
+
+    indexTemplate
+
+***************************************************/
+html{
+    width: 100%;
+    height: 100%;
+
+}
+body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.user-nav{
+    width: 40%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    left: -450px;
+
+    border-right: 1px solid var(--black);
+    border-radius: 10px;
+}
+
+.close{
+    padding: 10px;
+    z-index: 1;
+    position: absolute;
+    top: 2px;
+    right: 3%;
+}
+.content-part{
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+
+@media screen and (max-width: 1200px){
+    .user-nav{
+        width: 400px;
+    }
+}
+@media screen and (max-width: 900px){
+    .user-nav{
+        display: none;
+    }
+    .content-part{
+        width: 100%;
+    }
+}
+
+.left-move{
+    transition: 1s;
+    transform: translateX(-450px);
+}
+
+.right-move{
+    transition: 1s;
+    transform: translateX(450px);
+}
+
+
+/**************************************************
+
+    ownerNav
+
+***************************************************/
+.ownerNav{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.ownerNav img{
+    width: 150px;
+    height: 120px;
+
+    display: block;
+
+    position: relative;
+    top: -40px;
+}
+.ownerNav .img-circle{
+    width: 120px;
+    height: 120px;
+}
+
+.ownerNav label{
+    position: relative;
+    top: -30px;
+}
+.ownerNav img:hover{
+    cursor: pointer;
+}
+.ownerNav label:hover{
+    cursor: pointer;
+}
+
+.ownerNav ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 50px;
+}
+.ownerNav ul li{
+    margin: 10px auto;
+
+}
+.ownerNav ul li label{
+    text-align: center;
+    display: block;
+    margin: 10px auto 0 auto;
+}
+.ownerNav ul li button{
+    background: rgb(94,94,94);
+    width: 200px;
+    height: 44px;
+    border: none;
+
+}
+
+/**************************************************
+
+    ownerIndex
+
+***************************************************/
+.index-img{
+    background: rgba(52, 152, 219, 0.6);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+}
+.owner-content{
+	width: 70%;
+    text-align: center;
+    margin: 12% auto;
+}
+
+/**************************************************
+
+    ownerMy
+
+***************************************************/
+.my-page{
+    padding: 10px;
+    width: 100%;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    font-family: 'Noto Sans KR', sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: scroll;
+}
+.my-page section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    width: 100%;
+}
+.my-page img{
+    width: 150px;
+    height: 150px;
+}
+
+.subtitle{
+    background: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);
+    color: var(--white);
+    user-select: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+.subtitle h4{
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+.my-part ul{
+    position: relative;
+    left: 35px;
+
+}
+.my-part .my-part-info{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    margin-top: 20px;
+}
+.my-part-info .img-part{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.my-part .my-part-info ul button{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.mydogs{
+    width: 100%;
+}
+.mydogs .mydogs-slider{
+	width: 100%;
+}
+.mydog-item{
+	border-radius: 15px;
+    box-shadow: rgb(26, 188, 156) 2px 0 10px 1px;
+    width: 80%;
+    margin: 50px auto 20px auto;
+}
+.mydog-item .mydog-info-part{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    height: 100%;
+    padding: 20px;
+    
+    position: relative; 
+    top: -20px;
+    left: 10px;
+}
+.mydog-item .mydog-info-part ul{
+	font-size: 1.7rem;
+}
+.mydog-item .mydog-info-part .mydog-btn button{
+    width: 100%;
+    margin: 10px auto;
+}
+.mydog-name{
+    position: relative;
+    top: -20px;
+    
+    width: 25%;
+    height: 40px;
+    padding: 10px;
+    
+    border-radius: 15px;
+    border: 2px solid;
+    
+    background: #fafafa;
+    font-weight: bold;
+    text-align: center;
+}
+
+.mydogs .mydog-add{
+    font-size: 2.3rem;
+    margin: 25px auto 5px auto;
+}
+.mydogs .mydog-add:hover{
+    cursor: pointer;
+}
+
+.my-walked .form-group{
+    width: 90%;
+    padding: 10px;
+}
+.my-walked .walked-month{
+    font-size: 1.5rem;
+    background: #eff0f1;
+    padding: 10px 0 10px 20px;
+    margin: 10px auto;
+    border-bottom: 1px solid #888;
+}
+.my-walked .walked-info{
+    display: flex;
+}
+.walked-info ul{
+    margin: 20px;
+    font-size: 1.7rem;
+}
+.walked-info ul li{
+    margin: 10px 0;
+}
+
+
+/**************************************************
+
+    ownerMy - 반려견 추가하는 모달창
+
+***************************************************/
+.mydog-input{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    width: 80%;
+    height: 90%;
+}
+.mydog-input .input-form{
+    display: flex;
+    justify-content: space-around;
+}
+.mydog-input .input-form div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mydog-input .input-form img{
+    width: 200px;
+}
+.mydog-input .input-form img:hover{
+    cursor: pointer;
+}
+.mydog-input .input-form ul{
+    width: 100%;
+}
+.mydog-input .input-form ul li{
+    margin: 10px 0;
+}
+.mydog-input button{
+    width: 85%;
+    height: 50px;
+    margin: 0 auto;
+}
+
+
+/**************************************************
+
+    ownerMyInfoUpdate
+
+***************************************************/
+
+.myinfo-update{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.myinfo-update form{
+    width: 70%;
+    margin: 10px auto;
+}
+.myinfo-update form h3{
+    position: relative;
+    top: -50px;
+}
+.myinfo-update form table .img-part{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.myinfo-update form table input{
+    width: 90%;
+    margin-left: 20px;
+}
+.myinfo-update form table .select-city{
+    display: flex;
+    line-height: 33px;
+}
+.myinfo-update form table .select-city select{
+    margin: 0 10px;
+}
+.myinfo-update form table .btn-danger{
+    width: 150px;
+}
+.myinfo-update form table .btn-primary{
+    width: 100%;
+    height: 50px;
+    margin-top: 30px;
+}
+.mydog-del-modal-form{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+}
+.mydog-del-modal-form button{
+    width: 40%;
+    height: 45px;
+}
+/**************************************************
+
+    ownerRecruit
+
+***************************************************/
+.recruit-write{
+    width: 100%;
+    overflow: scroll;
+    padding: 20px;
+}
+.recruit-write section{
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.recruit-write section h4{
+    margin: 10px 0;
+}
+
+.recruit-write section ol li img{
+    width: 200px;
+    height: 200px;
+}
+.recruit-write section ol li{
+    text-align: center;
+}
+.recruit-write section ol li label{
+    margin: 20px auto 0 auto;
+}
+.recruit-write .form-group{
+    width: 40%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.recruit-write .form-group div{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    border: 1px solid var(--black);
+}
+.recruit-write .form-group label{
+    margin: 20px auto;
+    width: 80%;
+}
+.recruit-write .form-group i{
+    font-size: 10rem;
+}
+.recruit-write .date-select{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.recruit-write .notice label{
+    width: 100%;
+    height: 300px;
+}
+.recruit-write .notice textarea{
+    margin: auto;
+    height: 200px;
+}
+.recruit-write .pay {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.recruit-write .pay .input-label{
+    width: 50%;
+    margin-right: 10px;
+}
+.recruit-write .btn-line{
+    display: flex;
+    justify-content: space-around;
+}
+.recruit-write .btn-line .btn-default{
+    background: var(--darkgray);
+    color: var(--white);
+}
+.recruit-write .btn-line button{
+    width: 40%;
+    height: 45px;
+}
+#centerAddr{
+    margin: 20px auto 10px auto;
+}
+/**************************************************
+
+    ownerRecruit - 모달정보
+
+***************************************************/
+.recruit-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    width: 80%;
+    height: 90%;
+
+    padding: 20px;
+}
+.recruit-content{
+    display: flex;
+    justify-content: space-around;
+
+    padding-top: 20px;
+}
+.recruit-content .dog-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.recruit-content .dog-info img{
+    width: 200px;
+    height: 200px;
+}
+.recruit-content .dog-info label{
+    font-size: 2rem;
+    margin-top: 20px;
+}
+.recruit-content .match-info{
+    display: flex;
+    flex-direction: column;
+}
+.recruit-content .match-info li{
+    display: flex;
+}
+.recruit-content .match-info li h3{
+    width: 150px;
+    min-width: 150px;
+}
+.recruit-content .match-info li div{
+    padding-top: 20px;
+
+    overflow: scroll;
+    height: 200px;
+    max-width: 300px;
+}
+
+
+/**************************************************
+
+    ownerRecruitList
+
+***************************************************/
+.recruit-list{
+    height: 100%;
+    padding: 20px;
+
+    overflow-x: hidden;
+}
+.list-part{
+    margin-bottom: 155px;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.list-part .subtitle{
+    width: 100%;
+    display: flex;
+}
+.list-part .list-item{
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 5px 0 0 0;
+    margin: 10px 5px;
+
+    width: 30%;
+    height: 400px;
+
+    background: rgba(52, 152, 219, 0.28);
+}
+.list-part .list-item:hover{
+    cursor: pointer;
+}
+.btn-part{
+    background: white;
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+    width: 70%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+.btn-part .btn-default{
+    background: var(--darkgray);
+    color: white;
+    width: 100%;
+    height: 50px;
+}
+.list-part .list-item img{
+    width: 90%;
+    height: 200px;
+}
+.list-part .list-item ul{
+    font-size: 1.4rem;
+
+    width: 90%;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Jua', sans-serif;
+}
+
+.modal-content .recruit-write{
+    width: 100%;
+    height: 100%;
+
+    padding: 20px;
+}
+.modal-content .btn-line{
+    display: flex;
+    justify-content: space-around;
+}
+.modal-content .btn-line button{
+    width: 40%;
+    height: 45px;
+}
+
+/**************************************************
+
+    ownerRecruitList 모달
+
+***************************************************/
+.recruit-walker-list{
+    width: 100%;
+    height: 100%;
+
+    overflow: scroll;
+
+    display: flex;
+    flex-direction: column;
+}
+.recruit-walker-list .list-item{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background: rgba(52, 152, 219, 0.3);
+    border-radius: 10px;
+    margin: 10px;
+}
+.recruit-walker-list .list-item .left-part{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5rem;
+}
+.recruit-walker-list .list-item .left-part img{
+    margin-bottom: 15px;
+
+    width: 30%;
+}
+.recruit-walker-list .list-item .right-part{
+    width: 50%;
+}
+.recruit-walker-list .list-item .star-rating {
+    width: 170px;
+}
+.recruit-walker-list .list-item .star-rating, .recruit-walker-list .list-item .star-rating span {
+    display:inline-block;
+    height:27px;
+    overflow:hidden;
+    background:url("../../images/littlestar.png")no-repeat;
+}
+.recruit-walker-list .list-item .star-rating span{
+    background-position:left bottom;
+    line-height:0;
+    vertical-align:top;
+}
+.recruit-walker-list .list-item .right-part button{
+    background: rgb(142, 68, 173);
+    height: 40px;
+    width: 100%;
+    margin-top: 30px;
+}
+/**************************************************
+
+    ownerWalkerList
+
+***************************************************/
+.walker-list{
+    width: 100%;
+    height: 100%;
+
+    overflow: scroll;
+}
+
+.search-part{
+    padding: 20px;
+    background: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+.search-part form{
+	width: 65%;
+	margin-left: 3%;
+}
+.search-part label{
+    width: 90%;
+}
+.search-part button{
+    margin-left: 20px;
+}
+.items{
+    margin-top: 80px;
+}
+.walker-list .list-item{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+    width: 95%;
+    padding: 10px 0;
+}
+.walker-list .list-item:hover{
+	cursor: pointer;
+}
+
+.list-item img{
+    width: 300px;
+    height: 250px;
+}
+
+
+
+
+
+/**************************************************
+
+    ownerWalkerList
+
+***************************************************/
+.walker-info{
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    width: 100%;
+    height: 100%;
+}
+
+.info-top{
+    background: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);
+    color: var(--white);
+    width: 100%;
+    height: 180px;
+    padding: 30px;
+
+    user-select: none;
+}
+.info-content{
+    width: 95%;
+    padding: 20px;
+
+    background: var(--white);
+    box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1);
+
+    position: relative;
+    top: -90px;
+
+    margin: 1px auto;
+    border-radius: 20px;
+}
+
+.info-box{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+    padding: 20px;
+}
+.info-box .star-rating {
+    width: 170px;
+}
+.info-box .star-rating, .info-box .star-rating span {
+    display:inline-block;
+    height:27px;
+    overflow:hidden;
+    background:url("../../images/littlestar.png")no-repeat;
+}
+.info-box .star-rating span{
+    background-position:left bottom;
+    line-height:0;
+    vertical-align:top;
+}
+.info-box .img-rounded{
+    width: 300px;
+    height: 250px;
+}
+.info-box ul button{
+    margin: 20px auto 5px auto;
+    width: 100%;
+    height: 45px;
+
+    background: rgb(142, 68, 173);
+    color: var(--white);
+}
+.info-box .glyphicon-remove{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.glyphicon-remove:hover{
+    cursor: pointer;
+}
+.part-title{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.review-list .img-rounded{
+    width: 150px;
+    height: 150px;
+
+    margin-left: 40px;
+}
+.review-list .img-circle{
+    width: 40px;
+    height: 35px;
+}
+.review-list .star-rating {
+    width: 90px;
+}
+.review-list .star-rating, .review-list .star-rating span {
+    display:inline-block;
+    height:14px;
+    overflow:hidden;
+    background:url("../../images/morelittlestar.png")no-repeat;
+}
+.review-list .star-rating span{
+    background-position:left bottom;
+    line-height:0;
+    vertical-align:top;
+}
+.review-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.review-item ul{
+    width: 80%;
+    margin-left: 50px;
+}
+.review-item ul .bottom-margin{
+    margin-bottom: 30px;
+}
+.review-item ul .bottom-margin .right{
+    position: relative;
+    left: 100px;
+}
+
+
+/**************************************************
+
+    ownerTalkList
+
+***************************************************/
+.search-part form{
+    display: flex;
+    justify-content: center;
+}
+.search-part form label{
+    width: 88%;
+}
+.talk-list{
+    width: 100%;
+}
+.talk-list .list-part{
+    margin-top: 85px;
+    width: 100%;
+}
+.list-part .talk-item{
+    display: flex;
+    justify-content: center;
+    background: rgb(224, 224, 224);
+    width: 90%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--darkgray);
+    margin: 20px auto;
+}
+.list-part .talk-item ul{
+    width: 85%;
+    display: flex;
+}
+.list-part .talk-item ul img{
+    width: 75px;
+    height: 75px;
+}
+.list-part .talk-item ul div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    margin-left: 30px;
+}
+/**************************************************
+
+    ownerTalkContent
+
+***************************************************/
+.talk-content{
+    width: 100%;
+    height: 100%;
+
+    overflow: scroll;
+
+
+    margin-bottom: 54px;
+
+}
+.talk-content .reserve-btn{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    color: rgb(51, 51, 51);
+    background: rgba(52, 152, 219, 0.33);
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: bold;
+    left: 0;
+    position: fixed;
+    top: 0;
+}
+.reserve-btn:hover{
+    cursor: pointer;
+}
+.talk-content .content-part{
+    margin-top: 60px;
+    padding: 20px;
+}
+.talk-content .content-part .you{
+    padding: 10px;
+    display: flex;
+}
+.talk-content .content-part .you img{
+    width: 60px;
+    height: 60px;
+}
+.content-part .you ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 30px;
+    max-width: 50%;
+}
+.content-part .you ul li{
+    display: flex;
+    align-items: center;
+}
+.content-part .you div{
+    padding: 8px;
+    border: 1px solid;
+    border-radius: 10px;
+    margin-right: 10px;
+    max-width: 83%;
+}
+.content-part .you span {
+    width: 80px;
+}
+.talk-content .content-part .my{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 0;
+}
+.talk-content .content-part .my ul{
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+    margin-right: 0;
+}
+.talk-content .content-part .my ul li{
+    margin-right: 0;
+}
+.talk-content .content-part .my .my-talk-content{
+    padding: 8px;
+    border: 1px solid;
+    border-radius: 10px;
+    margin-left: 10px;
+    float: right;
+}
+
+.talk-inputForm{
+    background: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 15px 15px 5px;
+}
+.talk-inputForm label{
+    width: 93%;
+    margin-left: 10px;
+}
+/**************************************************
+
+    ownerTalkContent - 예약정보box
+
+***************************************************/
+.you ul li .reserve-box-you{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    width: 100%;
+    padding: 15px 15px 5px 15px;
+
+    background: rgb(237, 237, 237);
+    border-radius: 10px;
+    border: none;
+}
+.you ul li .reserve-box-you button{
+    margin: 15px auto 5px auto;
+    width: 70%;
+}
+
+.reserve-box-my{
+    width: 40%;
+    position: relative;
+    right: -30%;
+}
+
+/**************************************************
+
+    ownerTalkContent - modal
+
+***************************************************/
+.reserve-modal{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+}
+.reserve-modal .dont-match-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    height: 70%;
+    padding: 20px;
+    overflow: scroll;
+}
+.reserve-modal .dont-match-list .list-item{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    border: 1px solid;
+    border-radius: 10px;
+
+    width: 85%;
+    height: 145px;
+
+    padding: 20px;
+    margin-bottom: 10px;
+}
+.reserve-modal .dont-match-list .list-item:hover{
+    cursor: pointer;
+}
+.reserve-modal .dont-match-list .list-item img{
+    width: 100px;
+    height: 100px;
+}
+.reserve-modal .new-recruit{
+    text-align: center;
+    font-size: 2rem;
+    margin: 20px auto;
+}
+.reserve-modal .new-recruit i, .reserve-modal .new-recruit label:hover{
+    cursor: pointer;
+
+}
+.reserve-box-my{
+
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    padding: 20px;
+
+    background: rgb(237, 237, 237);
+    border-radius: 10px;
+
+}
+
+/**************************************************
+
+    ownerActivityList
+
+***************************************************/
+.active-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow: scroll;
+
+    width: 100%;
+}
+.active-list h2{
+    margin: 30px auto 100px auto;
+}
+.active-list .list-part{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.active-list .list-item{
+    display: flex;
+    flex-direction: row;
+
+    background: rgba(52, 152, 219, 0.24);
+    font-family: 'Jua', sans-serif;
+
+    width: 90%;
+    height: 300px;
+
+    padding: 20px;
+    border-radius: 10px;
+}
+.active-list .list-item:hover{
+    cursor: pointer;
+}
+.active-list .list-item img{
+    width: 250px;
+    height: 230px;
+}
+.active-list .list-item li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.active-list .list-item ol{
+    width: 100%;
+    font-size: 1.7rem;
+
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--white);
+}
+.active-list .list-item ol li{
+    flex-direction: row;
+    align-items: center;
+    margin: 10px;
+}
+.active-list .list-item ol li label{
+    margin-right: 20px;
+}
+.active-list .list-item .notice{
+    overflow: scroll;
+}
+
+.list-part .onair{
+    background: lightcoral;
+}
+.popup{
+    display: flex;
+    flex-direction: column;
+}
+.popup button{
+    position: relative;
+    top: 50px;
+    height: 50px;
+}
+.active-modal{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.active-modal button{
+    width: 100%;
+}
+/**************************************************
+
+    ownerActiviting
+
+***************************************************/
+.activing{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+.activing .map-part{
+    margin: 30px auto;
+    border-radius: 10px;
+
+    width: 100%;
+    height: 400px;
+
+    padding: 10px;
+    border: 1px solid;
+}
+.activing-info{
+    width: 100%;
+}
+.activing-info img{
+    width: 200px;
+}
+.activing-info .title{
+    margin: 30px 0 10px 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.activing-info button{
+    margin: 40px auto 20px auto;
+    width: 100%;
+    height: 50px;
+}
+
+.starR{
+    background: url(http://miuu227.godohosting.com/images/icon/ico_review.png) no-repeat right 0;
+    background-size: auto 100%;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR.on{
+    background-position:0 0;
+}
+.starR1{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR2{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR1.on{background-position:0 0;}
+.starR2.on{background-position:-15px 0;}
+.review-form{
+    width: 90%;
+    height: 100%;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.review-form .btn-line{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+.review-form label{
+    width: 100%;
+    height: 150px;
+}
+.review-form label textarea{
+    width: 100%;
+    height: 100%;
+}

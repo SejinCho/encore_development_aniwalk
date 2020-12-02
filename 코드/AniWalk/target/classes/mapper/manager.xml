@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.pandorabox.aniwalk.manager">
+	<select id="idcheck" parameterType="String" resultType="int">
+		select count(*) from ani_manage where manager_id = #{manager_id}
+	</select>
+	
+	<select id="pwcheck" parameterType="String" resultType="String">
+		select manage_pw from ani_manage where manager_id = #{manager_id}
+	</select>
+	
+	<select id="memberlist" resultType="member">
+		select * from ani_member
+	</select>
+	
+	<select id="walkerlist" resultType="walker">
+		select * from ani_walker
+	</select>
+	
+	<select id="userinfo" parameterType="String" resultType="joinMemberDogImage">
+		select m.mem_id, m.mem_nickname, m.kakao_id, d.dog_name, d.dog_type, d.dog_info, i.dog_image
+			from ani_member m
+			join ani_dog d
+			on m.mem_id = d.mem_id
+			join ani_dog_img i
+			on d.dog_id = i.dog_id
+		where kakao_id=#{kakao_id}
+	</select>
+	 
+</mapper>

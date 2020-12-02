@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+	<definition name="owner/recruit" extends="ownerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/owner/ownerRecruit.jsp"/>
+	</definition>
+	<definition name="owner/my" extends="ownerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/owner/ownerMy.jsp"/>
+	</definition>
+	<definition name="owner/talkList" extends="ownerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/owner/ownerTalkList.jsp"/>
+	</definition>
+	<definition name="owner/walkerList" extends="ownerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/owner/ownerWalkerList.jsp"/>
+	</definition>
+	<definition name="owner/walkerInfo" extends="ownerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/owner/ownerWalkerInfo.jsp"/>
+	</definition>
+	<definition name="owner/talkContent" extends="ownerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/owner/ownerTalkContent.jsp"/>
+	</definition>
+	<definition name="owner/recruitList" extends="ownerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/owner/ownerRecruitList.jsp"/>
+	</definition>
+	<definition name="owner/activityList" extends="ownerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/owner/ownerActivityList.jsp"/>
+	</definition>
+	<definition name="owner/activity" extends="ownerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/owner/ownerActiviting.jsp"/>
+	</definition>
+	<definition name="owner/ownerMyInfoUpdateView" extends="ownerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/owner/ownerMyInfoUpdate.jsp"/>
+	</definition>
+	<definition name="owner/activDone" extends="ownerTemplate">
+		<put-attribute name="content" value="/WEB-INF/pages/owner/ownerActivityDone.jsp"/>
+	</definition>
+</tiles-definitions>
